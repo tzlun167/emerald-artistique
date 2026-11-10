@@ -89,7 +89,7 @@ tail -f /var/log/maillog
 **症狀**：瀏覽器 Console 顯示 CORS 錯誤
 
 **解決方案**：
-編輯 `api/contact.php`，檢查第 12-16 行：
+編輯 `api/contact.php`，檢查第 17-24 行：
 ```php
 $allowed_origins = [
     'https://你的域名.com',

@@ -18,17 +18,18 @@
 npm run build
 ```
 
-這會自動：
+這會：
 - 建置 Vue.js 前端應用
-- 複製 `api/contact.php` 到 `dist/api/`
-- 複製 `.htaccess` 到 `dist/`
-- 複製部署文檔到 `dist/doc/`
+- 複製 `images/` 到 `dist/`
+
+⚠️ **不會**複製 `api/contact.php`、`.htaccess`、`doc/` 到 `dist/`，這三項需手動放入（見 `DEVELOPMENT-WORKFLOW.md`）。
+⚠️ 本專案目前**無** `src/` 與 `package.json`，`npm run build` 無法執行。
 
 ### 2. 配置 API
 
 編輯 `dist/api/contact.php`：
 
-#### 2.1 設定 CORS 域名（第 12-16 行）
+#### 2.1 設定 CORS 域名（第 17-24 行）
 
 ```php
 $allowed_origins = [
@@ -49,12 +50,14 @@ $allowed_origins = [
 ];
 ```
 
-#### 2.2 設定郵件收件人（第 97-98 行）
+#### 2.2 設定郵件收件人（第 119-120 行）
 
 ```php
 $recipient = 'sales@emerald-artistique.com';
-$from = 'noreply@emerald-artistique.com';
+$from = 'www@emerald-artistique.com';
 ```
+
+> 註：檔案實際值為 `www@emerald-artistique.com`（非 `noreply@`）。
 
 替換為您的實際信箱：
 ```php
@@ -292,8 +295,11 @@ scp backup-$DATE.tar.gz user@backup-server:/backups/
 修改步驟：
 1. 修改 `src/` 目錄中的檔案
 2. 執行 `npm run build`
-3. 上傳更新的 `dist/` 內容
-4. 清除瀏覽器快取
+3. 手動補回 `api/contact.php`（build 不會複製）
+4. 上傳更新的 `dist/` 內容（不要上傳 `.htaccess`）
+5. 清除瀏覽器快取
+
+> ⚠️ 本專案目前沒有 `src/` 與 `package.json`，步驟 1–2 無法執行。
 
 ---
 

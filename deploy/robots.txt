@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# 不要索引部署文件與 API
+Disallow: /doc/
+Disallow: /deploy/
+Disallow: /api/
+
+Sitemap: https://emerald-artistique.com/sitemap.xml

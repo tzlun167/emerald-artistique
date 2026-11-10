@@ -1,5 +1,19 @@
 # Gmail SMTP 設置指南 - 解決郵件無法發送問題
 
+> ## ⚠️ 狀態：未實作（規格文件）
+>
+> 本文件描述的 `api/contact-smtp.php` **不存在於正式站台與本倉庫**：
+>
+> - 本機 `dist/api/contact-smtp.php` → 不存在
+> - 線上 `/api/contact-smtp.php` → 404
+> - PHPMailer / `vendor/` → 未安裝
+>
+> 正式站台目前仍使用原生 `mail()`（即本文開頭診斷為「送不出去」的那個版本）。
+> **郵件發送問題尚未解決**，本文僅為預備方案。
+> 若決定採用，需一併建立 `contact-smtp.php` 並安裝 PHPMailer。
+
+---
+
 ## 📌 問題診斷
 
 您提供的郵件日誌顯示：

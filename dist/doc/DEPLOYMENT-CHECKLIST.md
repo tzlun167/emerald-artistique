@@ -3,6 +3,11 @@
 ## 📁 完整檔案結構
 
 ### 開發目錄
+
+> ⚠️ **現況：本專案沒有開發目錄。**
+> 原始 Vue 專案（`src/`、`public/`、`package.json`、`vite.config.js`）目前不存在，
+> 倉庫中只有建置產物 `dist/`。下表為原始專案應有的結構，供日後取回原始碼時對照。
+
 ```
 emerald-casa/
 ├── src/                       # Vue.js 源碼
@@ -31,11 +36,11 @@ emerald-casa/
 dist/
 ├── index.html                  ← build 產生
 ├── assets/                     ← build 產生
-├── images/                     ← build 產生
+├── images/                     ← build 產生（從 public/ 複製）
 ├── api/
-│   └── contact.php            ← 自動複製
-├── .htaccess                   ← 自動複製
-└── doc/                       ← 自動複製（參考用）
+│   └── contact.php            ← 手動放入
+├── .htaccess                   ← 手動放入（nginx 主機不適用，勿上傳）
+└── doc/                       ← 手動放入（參考用）
 ```
 
 ---
@@ -47,16 +52,17 @@ dist/
 npm run build
 ```
 
-自動完成：
+只會完成：
 - ✅ 建置 Vue.js 前端
-- ✅ 複製 api/contact.php
-- ✅ 複製 .htaccess
-- ✅ 複製部署文檔
+- ✅ 複製 `images/`
+
+⚠️ **不會**複製 `api/`、`.htaccess`、`doc/`，這三項需手動放入。
+⚠️ 本專案目前無 `src/` 與 `package.json`，`npm run build` 無法執行。
 
 ### 步驟 2：修改設定
 編輯 `dist/api/contact.php`：
-- 第 12-16 行：修改域名
-- 第 97-98 行：修改信箱
+- 第 17-24 行：修改域名
+- 第 119-120 行：修改信箱（`$from` 現值為 `www@emerald-artistique.com`）
 
 ### 步驟 3：上傳
 上傳 `dist/` 的 5 項必需檔案到生產主機
@@ -71,9 +77,11 @@ npm run build
 ## ✅ 檢查清單
 
 部署前：
-- [ ] 已執行 `npm run build`
-- [ ] 修改域名設定
-- [ ] 修改信箱設定
+- [ ] （若有原始碼）已執行 `npm run build`
+- [ ] 已手動放入 `api/contact.php`（`npm run build` 不會複製）
+- [ ] 修改域名設定（第 17-24 行）
+- [ ] 修改信箱設定（第 119-120 行）
+- [ ] 確認**未**上傳 `.htaccess`（nginx 主機不適用）
 - [ ] 準備上傳
 
 部署後：

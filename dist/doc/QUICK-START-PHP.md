@@ -8,11 +8,12 @@
 npm run build
 ```
 
-這會自動完成：
+這會完成：
 - ✅ 建置 Vue.js 前端
-- ✅ 複製 `api/contact.php`（PHP 聯絡表單 API）
-- ✅ 複製 `.htaccess`（Apache 設定檔）
-- ✅ 複製所有部署文件
+- ✅ 複製 `images/`
+
+⚠️ **不會**複製 `api/contact.php`、`.htaccess`、`doc/`，這三項需手動放入 `dist/`。
+⚠️ 本專案目前**無** `src/` 與 `package.json`，`npm run build` 無法執行。
 
 ---
 
@@ -20,7 +21,7 @@ npm run build
 
 編輯 `dist/api/contact.php`，修改以下兩處：
 
-#### A. 設定允許的域名（第 12-16 行）
+#### A. 設定允許的域名（第 17-24 行）
 
 ```php
 $allowed_origins = [
@@ -37,12 +38,14 @@ $allowed_origins = [
 ];
 ```
 
-#### B. 設定收件人信箱（第 97-98 行）
+#### B. 設定收件人信箱（第 119-120 行）
 
 ```php
 $recipient = 'sales@emerald-artistique.com';
-$from = 'noreply@emerald-artistique.com';
+$from = 'www@emerald-artistique.com';
 ```
+
+> 註：檔案實際值為 `www@emerald-artistique.com`（非 `noreply@`）。
 
 替換為您的實際信箱：
 ```php
@@ -56,14 +59,15 @@ $from = 'noreply@yoursite.com';
 
 使用 cPanel 檔案管理器或 FTP 客戶端，上傳 `dist/` 目錄的內容：
 
-#### 必需檔案（5 項）：
+#### 必需檔案（4 項）：
 ```
 ✅ index.html
 ✅ assets/
 ✅ images/
 ✅ api/contact.php
-✅ .htaccess
 ```
+
+> ⚠️ `.htaccess` 適用於 Apache；正式站台為 **nginx**，該檔不生效，**請勿上傳**。
 
 #### 參考文件（不上傳）：
 ```
@@ -113,10 +117,12 @@ https://你的域名.com/api/contact.php
 ## 📋 部署檢查清單
 
 部署前確認：
-- [ ] 已執行 `npm run build`
-- [ ] 已修改 `dist/api/contact.php` 中的域名設定（第 12-16 行）
-- [ ] 已修改 `dist/api/contact.php` 中的信箱設定（第 97-98 行）
-- [ ] 已上傳所有必需檔案（index.html、assets/、images/、api/、.htaccess）
+- [ ] （若有原始碼）已執行 `npm run build`
+- [ ] 已手動放入 `api/contact.php`（build 不會複製）
+- [ ] 已修改 `dist/api/contact.php` 中的域名設定（第 17-24 行）
+- [ ] 已修改 `dist/api/contact.php` 中的信箱設定（第 119-120 行）
+- [ ] 已上傳所有必需檔案（index.html、assets/、images/、api/）
+- [ ] 確認**未**上傳 `.htaccess`
 
 部署後測試：
 - [ ] API 測試通過（訪問 /api/contact.php 看到錯誤訊息）
