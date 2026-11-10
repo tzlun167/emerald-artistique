@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水玉藝文工作室 | Emerald Artistique Casa</title>
+  <style>
+    /* 禁止文字選取 */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* 允許輸入框選取文字 */
+    input, textarea {
+      -webkit-user-select: text;
+      -moz-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
+    }
+  </style>
+  <script type="module" crossorigin src="/assets/index-DG6OSFf7.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BjSbnIl-.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    // 禁止滑鼠右鍵
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // 禁止鍵盤快捷鍵（Ctrl+C, Ctrl+U, F12 等）
+    document.addEventListener('keydown', function(e) {
+      // 禁止 Ctrl+C (複製)
+      if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault();
+        return false;
+      }
+      // 禁止 Ctrl+U (檢視原始碼)
+      if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        return false;
+      }
+      // 禁止 F12 (開發者工具)
+      if (e.key === 'F12') {
+        e.preventDefault();
+        return false;
+      }
+      // 禁止 Ctrl+Shift+I (開發者工具)
+      if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+        return false;
+      }
+      // 禁止 Ctrl+Shift+J (控制台)
+      if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+        return false;
+      }
+    });
+  </script>
+</body>
+</html>
